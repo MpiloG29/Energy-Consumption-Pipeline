@@ -1,0 +1,61 @@
+# Tableau Dashboard Instructions
+# File: consumption_trends.twb (to be created in Tableau Desktop)
+
+## DATA SOURCE:
+1. Connect to: dashboard_data/hourly_energy_data.csv
+2. Or use: dashboard_data/daily_energy_data.csv
+
+## RECOMMENDED VISUALIZATIONS:
+
+### Sheet 1: Time Series Analysis
+- Chart Type: Line Chart
+- X-Axis: date (continuous)
+- Y-Axis: total_kwh (sum)
+- Color: day_name (discrete)
+- Title: "Daily Energy Consumption Trends"
+
+### Sheet 2: Hourly Pattern Analysis  
+- Chart Type: Bar Chart
+- X-Axis: hour (discrete)
+- Y-Axis: avg_kwh (average)
+- Color: day_name
+- Title: "Average Consumption by Hour of Day"
+
+### Sheet 3: Day of Week Analysis
+- Chart Type: Heat Map
+- Rows: day_name
+- Columns: hour
+- Color: avg_kwh (average)
+- Title: "Consumption Heatmap: Day vs Hour"
+
+### Sheet 4: Statistical Summary
+- Show Cards for:
+  * Total Consumption (sum of total_kwh)
+  * Average Hourly Consumption (avg of avg_kwh)
+  * Peak Consumption (max of max_kwh)
+  * Minimum Consumption (min of min_kwh)
+
+### Dashboard: Energy Consumption Overview
+Layout: 2x2 grid
+1. Top Left: Time Series Analysis
+2. Top Right: Hourly Pattern Analysis  
+3. Bottom Left: Day of Week Heatmap
+4. Bottom Right: Statistical Summary
+
+## FILTERS TO ADD:
+1. Date Range Slider
+2. Day of Week Selector
+3. Hour Range Slider
+
+## CALCULATED FIELDS:
+1. Consumption Category:
+   IF [avg_kwh] < 2 THEN 'Low'
+   ELSEIF [avg_kwh] < 2.5 THEN 'Medium'
+   ELSE 'High'
+   END
+
+2. Peak Hours:
+   IF [hour] >= 17 AND [hour] <= 21 THEN 'Evening Peak'
+   ELSEIF [hour] >= 7 AND [hour] <= 10 THEN 'Morning Peak'
+   ELSE 'Off-Peak'
+   END

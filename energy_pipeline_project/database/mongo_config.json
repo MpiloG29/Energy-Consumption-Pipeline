@@ -1,0 +1,4 @@
+{
+  "collection": "energy_data",
+  "fields": ["household_id", "timestamp", "energy_consumption"]
+}

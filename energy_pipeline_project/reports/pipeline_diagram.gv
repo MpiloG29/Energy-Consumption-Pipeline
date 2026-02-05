@@ -1,0 +1,9 @@
+// pipeline_diagram.gv
+digraph G {
+  "energy_data.csv" -> "Data Ingestion";
+  "Data Ingestion" -> "Data Processing";
+  "Data Processing" -> "Analytics & Visualization";
+  "Data Processing" -> "Machine Learning";
+  "Analytics & Visualization" -> "Store Results";
+  "Machine Learning" -> "Store Results";
+}

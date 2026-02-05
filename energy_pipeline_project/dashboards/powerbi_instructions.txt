@@ -1,0 +1,67 @@
+# Power BI Dashboard Instructions
+# File: energy_dashboard.pbix (to be created in Power BI Desktop)
+
+## DATA IMPORT:
+1. Get Data ? Text/CSV
+2. Select: dashboard_data/hourly_energy_data.csv
+3. Load and Transform if needed
+
+## RECOMMENDED VISUALIZATIONS:
+
+### Page 1: Overview
+1. Card Visuals (Top):
+   - Total Consumption: SUM(total_kwh)
+   - Average Daily: AVERAGE(total_kwh)
+   - Peak Consumption: MAX(max_kwh)
+   - Minimum Consumption: MIN(min_kwh)
+
+2. Line Chart:
+   - X Axis: date
+   - Y Axis: total_kwh (Sum)
+   - Legend: day_name
+   - Title: "Daily Consumption Trend"
+
+3. Bar Chart:
+   - X Axis: hour
+   - Y Axis: avg_kwh (Average)
+   - Title: "Average Consumption by Hour"
+
+### Page 2: Detailed Analysis
+1. Matrix/Table:
+   - Rows: day_name
+   - Columns: hour
+   - Values: avg_kwh (Average)
+   - Conditional Formatting: Data bars
+
+2. Scatter Plot:
+   - X Axis: hour
+   - Y Axis: avg_kwh
+   - Size: total_kwh
+   - Color: day_name
+   - Title: "Consumption Distribution"
+
+3. Gauge/Donut:
+   - Show consumption by day of week
+   - Values: total_kwh per day_name
+
+### Page 3: Forecasting
+1. Line Chart with Forecast:
+   - Use Analytics pane to add forecast
+   - X Axis: date
+   - Y Axis: total_kwh
+   - Forecast length: 7 days
+
+## MEASURES TO CREATE:
+1. Daily Average = AVERAGE(daily_energy_data[avg_kwh])
+2. Peak Hour Consumption = MAXX(FILTER(hourly_energy_data, hourly_energy_data[avg_kwh] = MAX(hourly_energy_data[avg_kwh])), hourly_energy_data[avg_kwh])
+3. Weekend vs Weekday:
+   Weekend Consumption = CALCULATE(SUM(hourly_energy_data[total_kwh]), hourly_energy_data[day_name] IN {"Saturday", "Sunday"})
+   Weekday Consumption = CALCULATE(SUM(hourly_energy_data[total_kwh]), hourly_energy_data[day_name] IN {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"})
+
+## FILTERS:
+1. Date Slicer (Timeline)
+2. Day of Week Slicer
+3. Hour Range Slicer
+
+## THEME:
+Use built-in "Colorblind Safe" theme or create custom theme with energy colors (blue, green, yellow)
