@@ -552,21 +552,21 @@ with tab_bi:
     else:
         fig_forecast = None
 
-    st.plotly_chart(fig_daily, use_container_width=True)
+    st.plotly_chart(fig_daily, width="stretch")
     chart_cols = st.columns(2)
     with chart_cols[0]:
-        st.plotly_chart(fig_hourly, use_container_width=True)
+        st.plotly_chart(fig_hourly, width="stretch")
     with chart_cols[1]:
-        st.plotly_chart(fig_scatter, use_container_width=True)
+        st.plotly_chart(fig_scatter, width="stretch")
 
     chart_cols = st.columns(2)
     with chart_cols[0]:
-        st.plotly_chart(fig_table_heatmap, use_container_width=True)
+        st.plotly_chart(fig_table_heatmap, width="stretch")
     with chart_cols[1]:
-        st.plotly_chart(fig_donut, use_container_width=True)
+        st.plotly_chart(fig_donut, width="stretch")
 
     if fig_forecast is not None:
-        st.plotly_chart(fig_forecast, use_container_width=True)
+        st.plotly_chart(fig_forecast, width="stretch")
     else:
         st.info("Not enough data to generate a 7-day forecast.")
 
@@ -725,13 +725,13 @@ with tab_patterns:
         margin=dict(l=40, r=20, t=50, b=30),
     )
 
-    st.plotly_chart(fig_ts, use_container_width=True)
+    st.plotly_chart(fig_ts, width="stretch")
     col_a, col_b = st.columns(2)
     with col_a:
-        st.plotly_chart(fig_heatmap, use_container_width=True)
+        st.plotly_chart(fig_heatmap, width="stretch")
     with col_b:
-        st.plotly_chart(fig_seasonal, use_container_width=True)
-    st.plotly_chart(fig_weekend, use_container_width=True)
+        st.plotly_chart(fig_seasonal, width="stretch")
+    st.plotly_chart(fig_weekend, width="stretch")
 
 # ============================================================================
 # TAB: LOAD SHEDDING IMPACT
@@ -867,15 +867,15 @@ with tab_loadshed:
 
     col_a, col_b = st.columns(2)
     with col_a:
-        st.plotly_chart(fig_stages, use_container_width=True)
+        st.plotly_chart(fig_stages, width="stretch")
     with col_b:
-        st.plotly_chart(fig_backup, use_container_width=True)
+        st.plotly_chart(fig_backup, width="stretch")
 
     col_c, col_d = st.columns(2)
     with col_c:
-        st.plotly_chart(fig_transition, use_container_width=True)
+        st.plotly_chart(fig_transition, width="stretch")
     with col_d:
-        st.plotly_chart(fig_outage_dist, use_container_width=True)
+        st.plotly_chart(fig_outage_dist, width="stretch")
 
 # ============================================================================
 # TAB: COST ANALYSIS
@@ -1025,13 +1025,13 @@ with tab_cost:
         margin=dict(l=40, r=20, t=50, b=30),
     )
 
-    st.plotly_chart(fig_monthly, use_container_width=True)
+    st.plotly_chart(fig_monthly, width="stretch")
     col_a, col_b = st.columns(2)
     with col_a:
-        st.plotly_chart(fig_household_cost, use_container_width=True)
+        st.plotly_chart(fig_household_cost, width="stretch")
     with col_b:
-        st.plotly_chart(fig_savings, use_container_width=True)
-    st.plotly_chart(fig_cost_outage, use_container_width=True)
+        st.plotly_chart(fig_savings, width="stretch")
+    st.plotly_chart(fig_cost_outage, width="stretch")
 
 # ============================================================================
 # TAB: PREDICTIVE INSIGHTS
@@ -1127,11 +1127,11 @@ with tab_predict:
             margin=dict(l=40, r=20, t=50, b=30),
         )
 
-        st.plotly_chart(fig_confidence, use_container_width=True)
+        st.plotly_chart(fig_confidence, width="stretch")
 
         col_a, col_b = st.columns(2)
         with col_a:
-            st.plotly_chart(fig_anomaly, use_container_width=True)
+            st.plotly_chart(fig_anomaly, width="stretch")
 
         with col_b:
             st.subheader("Scenario Simulator")

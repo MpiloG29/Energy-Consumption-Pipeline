@@ -1,0 +1,8 @@
+# Deployment-focused dependencies (keep lightweight for web hosting)
+pandas
+numpy
+scikit-learn
+joblib
+plotly
+scipy
+streamlit

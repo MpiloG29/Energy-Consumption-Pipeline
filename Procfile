@@ -1,0 +1,1 @@
+web: streamlit run energy_pipeline_project/dashboards/streamlit_app.py --server.port=$PORT --server.address=0.0.0.0

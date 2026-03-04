@@ -365,9 +365,9 @@ class EnergyPredictorHandler(BaseHTTPRequestHandler):
 # START SERVER
 # ============================================================================
 
-def run_server(port=5000):
+def run_server(port=5000, host='0.0.0.0'):
     """Start the energy predictor API server."""
-    server_address = ('', port)
+    server_address = (host, port)
     httpd = HTTPServer(server_address, EnergyPredictorHandler)
     print("=" * 70)
     print(f"🚀 Energy Consumption Predictor API started on port {port}")
@@ -383,4 +383,6 @@ def run_server(port=5000):
 
 
 if __name__ == '__main__':
-    run_server(port=5000)
+    cli_port = int(sys.argv[1]) if len(sys.argv) > 1 else int(os.getenv('PORT', '5000'))
+    cli_host = os.getenv('HOST', '0.0.0.0')
+    run_server(port=cli_port, host=cli_host)
